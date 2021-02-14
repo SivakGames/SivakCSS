@@ -1,0 +1,472 @@
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* 	Boxes (general)
+----------------------------------------------------------------------------
+	By default creates a gray area with some padding.
+	.outline-box creates a white area with some padding and a border
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.box
+{	background-color: #EEE;
+	padding: 1rem;
+	margin: 0 auto;
+}
+.outline-box
+{	background-color: #FFF;
+	padding: 1rem;
+	border: 1px solid;
+	margin: 0 auto;
+}
+
+.box:not(:last-child),
+.outline-box:not(:last-child)
+{	margin-bottom: 2rem;
+}
+
+.box.white
+{	background-color: #FFF;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* 	Buttons (general)
+----------------------------------------------------------------------------
+	By default, creates a gray BG button object. Can have one or two buttons in a tag.
+	If only one button is in the tag, then it'll stretch out
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.btns
+{	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.btns:not(:last-child)
+{	margin-bottom: 2rem;
+}
+
+.btns > *
+{	background-color: #DDD;
+	flex: 0 1 48%;
+	box-sizing: border-box;
+	display: block;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid transparent;
+	padding: 1rem;
+	position: relative;
+}
+.btns > :only-child
+{	flex-basis: 0%;
+	flex-grow: 1;
+}
+.btns > a:hover,
+.btns > button:hover
+{	background-color: #EEE;
+}
+
+
+/* 	auto-size - The buttons' sizes will be auto instead of a fixed percent.
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.btns.auto-size
+{	justify-content: flex-start;
+}
+
+.btns.auto-size > *,
+.btns.auto-size > :only-child
+{	flex-basis: auto;
+	flex-grow: 0;
+}
+.btns.auto-size > :not(:last-child)
+{	margin-right: 1rem;
+}
+
+/* 	.smt-break will make all buttons be one on a line and full width for mobile devices */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 999px)
+{	.btns.smt-break
+	{	display: block;
+	}
+	.btns.smt-break > *
+	{	display: block;
+		display: flex;
+		width: auto;
+		max-width: none;
+		margin: 0 auto 2rem;
+	}
+	.btns.smt-break > :last-child
+	{	margin-bottom: 0;
+	}
+}
+
+/*===============================================================================================================================================*/
+/* Button decorations */
+/*===============================================================================================================================================*/
+/* 	arrow-icon - Will put a simple arrow on the right side of the button
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.btns.arrow-icon > *,
+.btns > .arrow-icon
+{	padding-right: 2em;
+	padding-left: 2em;
+}
+
+.btns.arrow-icon > ::after,
+.btns > .arrow-icon::after
+{	content: "";
+	border: 0 solid;
+	border-top-width: 2px;
+	border-right-width: 2px;
+	width: 0.5em;
+	height: 0.5em;
+	margin-top: -0.25em;
+	position: absolute;
+	right: 0;
+	margin-right: 0.875em;
+	top: 50%;
+	box-sizing: border-box;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	z-index: 2;
+}
+
+/* 	img-icon - General markup to place an image icon before the button's text 
+	Additional classes will be needed to actually put in the background-image part */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.btns > .img-icon::before
+{	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: 100% auto;
+	background-size: 100% auto;
+	content: "";
+	width: 1.5em;
+	height: 1.5em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 0.5em;
+}
+.btns > .img-icon:empty::before
+{	margin-right: 0;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Breadcrumb navigator
+----------------------------------------------------------------------
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.breadcrumb
+{	display: flex;
+}
+.breadcrumb > *
+{	display: inline-block;
+}
+.breadcrumb > ::after
+{	content: ">";
+	display: inline-block;
+	padding: 0 0.5em;
+}
+.breadcrumb > :last-child::after
+{	content: none;
+}
+
+.breadcrumb a
+{	color: RoyalBlue;
+	color: var(--link-color, RoyalBlue);
+}
+.breadcrumb a:hover
+{	color: SkyBlue;
+	color: var(--link-hover-color, SkyBlue);
+	text-decoration: underline;
+}
+
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Pagination (general) 
+-------------------------------------
+Assumes an OL tag to contain the individual pages
+Typically made with an A tag at the start for previous, at the end for next, and an OL in the middle
+
+This is just a very generic shape by default.  Additional styling will be needed to theme it.
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.pagination
+{	text-align: center;
+	padding: 1px 0;
+	font-size: 1em;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pagination:not(:last-child)
+{	margin-bottom: 2rem;
+}
+
+.pagination *
+{	box-sizing: border-box;
+	line-height: inherit;
+}
+
+.pagination a
+{	background-color: #DDD;
+}
+.pagination a:hover
+{	background-color: #EEE;
+}
+.pagination .current
+{	background-color: #EEE;
+}
+
+.pagination ol
+{	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pagination ol *
+{	display: block;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Text with preceding icons (e.g. dots, triangles, arrows)
+----------------------------------------------------------------------
+By default, the tag will have left padding and indentation applied.
+.pre-icon-parent can be used to make all child tags have the icon applied
+
+Ideal uses: bullet lists
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.pre-icon,
+.pre-icon-parent > *
+{	padding-left: 1em;
+	text-indent: -1em;
+	box-sizing: border-box;
+	display: block;
+}
+
+/* Square */
+.pre-icon.square::before,
+.pre-icon.dot::before,
+.pre-icon-parent.square > *::before,
+.pre-icon-parent.dot > *::before
+{	background-color: currentColor;
+	content: "";
+	width: 0.6em;
+	height: 0.6em;
+	margin: 0 0.2em;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+/* Circular dot */
+.pre-icon.dot::before,
+.pre-icon-parent.dot > *::before
+{	border-radius: 50%;
+}
+
+/* Triangle pointing right */
+.pre-icon.triangle::before,
+.pre-icon-parent.triangle > *::before
+{	content: "";
+	border-left: 0.5em solid currentColor;
+	border-top: 0.4em solid transparent;
+	border-bottom: 0.4em solid transparent;
+	margin-right: 0.25em;
+	margin-left: 0.25em;
+	display: inline-block;
+	vertical-align: 0.1em;
+	box-sizing: border-box;
+}
+
+/* Arrow pointing right */
+.pre-icon.arrow::before,
+.pre-icon-parent.arrow > *::before
+{	content: "";
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	border-radius: 0;
+	margin-left: 0;
+	margin-right: 0.5em;
+	width: 0.5em;
+	height: 0.5em;
+	display: inline-block;
+	vertical-align: 0.1em;
+	box-sizing: border-box;
+}
+
+/* Remove icon */
+.pre-icon.no-icon::before,
+.pre-icon-parent > .no-icon::before
+{	content: none;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Numeric lists 
+-------------------------------------
+Simply inserts numbers before the child tags.  Will adjust size appropriately for lists of 10 or more items
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.numeric-list
+{	counter-reset: counter0;
+}
+.numeric-list > *
+{	padding-left: 1.5em;
+	text-indent: -1.5em;
+	counter-increment: counter0;
+	display: block;
+	box-sizing: border-box;
+}
+
+.numeric-list > ::before
+{	content: counter(counter0) ".";
+	display: inline-block;
+	min-width: 1.5em;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 0.5em;
+}
+
+.numeric-list > :nth-child(1):nth-last-child(n+10),
+.numeric-list > :nth-child(2):nth-last-child(n+9),
+.numeric-list > :nth-child(3):nth-last-child(n+8),
+.numeric-list > :nth-child(4):nth-last-child(n+7),
+.numeric-list > :nth-child(5):nth-last-child(n+6),
+.numeric-list > :nth-child(6):nth-last-child(n+5),
+.numeric-list > :nth-child(7):nth-last-child(n+4),
+.numeric-list > :nth-child(8):nth-last-child(n+3),
+.numeric-list > :nth-child(9):nth-last-child(n+2),
+.numeric-list > :nth-child(n+10)
+{	padding-left: 2em;
+	text-indent: -2em;
+}
+.numeric-list > :nth-child(1):nth-last-child(n+10)::before,
+.numeric-list > :nth-child(2):nth-last-child(n+9)::before,
+.numeric-list > :nth-child(3):nth-last-child(n+8)::before,
+.numeric-list > :nth-child(4):nth-last-child(n+7)::before,
+.numeric-list > :nth-child(5):nth-last-child(n+6)::before,
+.numeric-list > :nth-child(6):nth-last-child(n+5)::before,
+.numeric-list > :nth-child(7):nth-last-child(n+4)::before,
+.numeric-list > :nth-child(8):nth-last-child(n+3)::before,
+.numeric-list > :nth-child(9):nth-last-child(n+2)::before,
+.numeric-list > :nth-child(n+10)::before
+{	min-width: 2em;
+}
+
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Sub menus (general)
+---------------------------------
+Tags that will make a child tag called .sub-menu appear when they gain focus.
+.sub-menu will disappear after focus on the parent .sub-menu-parent is lost.
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.sub-menu-parent
+{ 	position: relative;
+}
+
+.sub-menu 
+{ 	background-color: #E0E0E0;
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1;
+	-webkit-transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+	transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.sub-menu-parent:focus .sub-menu,
+.sub-menu-parent:hover .sub-menu 
+{	visibility: visible;
+	opacity: 1;
+	z-index: 1;
+	-webkit-transition-delay: 0s, 0s, 0.3s;
+	transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* SVG holders (containers ) */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.svg-holder
+{	display: block;
+	position: relative;
+	padding-top: 1em;
+}
+
+.svg-holder svg
+{	width: 100%;
+	display: block;
+	max-width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* iframe holders (YT videos, Google Maps, etc.) */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.iframe-holder
+{	background-color: #AAA;
+	padding-top: 50%;
+	position: relative;
+	display: block;
+}
+
+.iframe-holder > iframe
+{	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* 	Input formatting (general)
+----------------------------------------------------------------------------
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* This class (generally used on a div) forces an input, select, or textarea inside of it to be the full size of its parent.
+/* To control specific widths, resize the parent tag (or its parent tag).
+/* Such sizing is FAR more reliable than sizing the bare input and gives much better control maintaining a uniform appearance. */
+.input-holder
+{	overflow: hidden;
+	padding: 1px;
+	box-sizing: border-box;
+	display: block;
+}
+
+.input-holder > input,
+.input-holder > textarea,
+.input-holder > select
+{	width: 100%;
+	display: block;
+}
+
+/* Indents checkboxes or radios */
+.indent-input
+{	padding-left: 25px;
+	text-indent: -25px;
+	display: block;
+}
+.indent-input input[type='checkbox'],
+.indent-input input[type='radio']
+{	width: 20px;
+	display: inline-block;
+	margin: 0 5px 0 0;
+	text-indent: 0;
+}

@@ -1,0 +1,626 @@
+/*===============================================================================================================================================*/
+/* 
+	General purpose CSS 
+	Revised and Updated: 2/14/2021
+*/
+/*===============================================================================================================================================*/
+
+/*===============================================================================================================================================*/
+/* Font setting variables */
+/*===============================================================================================================================================*/
+:root
+{	--text-color: #333;
+	--link-color: #0090DC;
+	--link-hover-color: #10A0EC;
+	--eng-serif-fonts: "Times New Roman", "Times", serif;
+	--eng-sans-serif-fonts: "Verdana", "Geneva", "Arial", sans-serif;
+	--mono-fonts: "Consolas", "Monaco", "Liberation Mono", "Courier New", monospace;
+}
+
+html
+{	--serif-fonts: var(--eng-serif-fonts);
+	--sans-serif-fonts: var(--eng-sans-serif-fonts);
+}
+
+/*==========================================================================================================================================================*/
+/* Base tags - Redefinitions */
+/*==========================================================================================================================================================*/
+*
+{	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 1em;
+	line-height: inherit;
+	color: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	font-family: inherit;
+	text-indent: 0;
+}
+
+/*===============================================================================================================================================*/
+/* Default general settings, font(s), and text size
+/*===============================================================================================================================================*/
+html
+{	color: Black;
+	color: var(--text-color,Black);
+	font-family: sans-serif;
+	font-family: var(--sans-serif-fonts, sans-serif);
+	font-size: 16px;
+	line-height: 1.6em;
+	scroll-behavior: smooth;
+}
+
+body
+{	background-color: White;
+	min-width: 320px;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	font-size: inherit;
+	line-height: inherit;
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+	word-wrap: break-word;
+}
+
+/* HTML5 resets */
+/*===============================================================================================================================================*/
+header, main, footer,
+section, article,
+nav, aside,
+figure, figcaption,
+address
+{	display: block;
+	line-height: 1.6em;
+}
+
+/* Block tags reset line heights as font size changes are likely */
+/*===============================================================================================================================================*/
+div,
+h1, h2, h3, h4, h5, h6, p,
+ol, ul, li, dl, dt, dd,
+table, tbody, tfoot, thead, tr, th, td,
+blockquote,
+form,
+fieldset, legend,
+input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='reset']):not([type='range']),
+textarea,
+select, option
+{	line-height: 1.6em;
+}
+
+/* The small tag, by default, should have a set size reduction */
+small
+{	font-size: 0.8em;
+}
+
+/* Fixes potential indentation bugs that may arise with inline-block before/afters */
+::before, ::after
+{	text-indent: 0;
+}
+
+/* iPhone or Safari overrides */
+button, input[type='submit'], input[type='reset']
+{	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	appearance: none;
+	border-radius: 0;
+}
+
+
+/*==========================================================================================================================================================*/
+/* 	Image resets - these settings are suitale for responsive design and scaling. 
+	Special class of emoji possible to make individual images or images that are children inline-blocks, however. */
+/*==========================================================================================================================================================*/
+img
+{	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.emoji img,
+img.emoji
+{	display: inline-block;
+}
+
+/*==========================================================================================================================================================*/
+/* 	Link resets - Links don't really need to be underlined or have a default color unless clearly within some text. */
+/*==========================================================================================================================================================*/
+/* Give links no default color nor underline by default */
+a
+{	color: inherit;
+	text-decoration: none;
+}
+
+a:hover
+{	text-decoration: none;
+}
+
+/* Links clearly within plain text (almost always in a P tag) should look a different color than the text. */ 
+/* To emulate this with other tags, use the .text-link class either on the parent/ancestor or on the A tag itself */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+p a,
+.text-link a, a.text-link
+{	color: RoyalBlue;
+	color: var(--link-color, RoyalBlue);
+}
+
+p a:hover, 
+.text-link a:hover, a.text-link:hover,
+p label:hover,
+.text-link label:hover, label.text-link:hover
+{	color: SkyBlue;
+	color: var(--link-hover-color, SkyBlue);
+	text-decoration: underline;
+}
+
+/* For some links (e.g. images), this will provide a simple hover animation for opacity */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.img-link a:hover,
+a.img-link:hover
+{	opacity: 0.75;
+}
+
+/*==========================================================================================================================================================*/
+/* Clickable areas (links, buttons, etc) settings */
+/*==========================================================================================================================================================*/
+/* Clickable areas should have a cursor change to indicate that they are clickable. */
+a, button, label,
+input[type='submit'], input[type='reset'],
+input[type='checkbox'], input[type='radio'], input[type='range'],
+[onclick]
+{	cursor: pointer;
+}
+
+/*==========================================================================================================================================================*/
+/* List overrides */
+/*==========================================================================================================================================================*/
+ol, ul, li,
+dl, dt, dd
+{	list-style: none;
+	list-style-type: none;
+}
+
+/*==========================================================================================================================================================*/
+/* Table overrides */
+/*==========================================================================================================================================================*/
+table
+{	border-spacing: 0;
+	empty-cells: show;
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;
+}
+
+table th, table td
+{	word-wrap: break-word;
+	vertical-align: top;
+	-webkit-text-size-adjust: none;
+}
+
+/*===============================================================================================================================================*/
+/* Dynamic pages and inputs */
+/* Minimum 16 font size is done to ensure no needless auto zooming on iPhones */
+/*==========================================================================================================================================================*/
+input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='reset']):not([type='range']),
+textarea, select
+{	box-sizing: border-box;
+	border: 1px solid;
+	font-size: 16px;
+	font-size: max(1rem,16px);
+}
+
+textarea
+{	max-width: 100%;
+	resize: vertical;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Common Utility Classes */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+
+/* Font family settings */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.sans-serif, .sans, .gothic
+{	font-family: sans-serif;
+	font-family: var(--sans-serif-fonts, sans-serif);
+}
+
+.serif, .times, .mincho
+{	font-family: serif;
+	font-family: var(--serif-fonts, serif);
+}
+
+/* Text alignment (should never be overwritten, thus important) */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.tl
+{	text-align: left !important;
+}
+.tc
+{	text-align: center !important;
+}
+.tr
+{	text-align: right !important;
+}
+.tj
+{	text-align: justify !important;
+}
+
+/* Text appearance (should never be overwritten, thus important) */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.bold
+{	font-weight: bold !important;
+}
+.italic
+{	font-style: italic !important;
+}
+.strike
+{	text-decoration: line-through !important;
+}
+.underline
+{	text-decoration: underline !important;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Widths */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.w-auto
+{	width: auto;
+}
+.w-full
+{	width: 100%;
+}
+.w-screen
+{	width: 100vw;
+}
+
+/* Max widths */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.max-full
+{	max-width: 100%;
+}
+.max-screen
+{	max-width: 100vw;
+}
+
+/* Pixel-based widths - Typically used for fixed-size containers */
+/* If content need not be centered, set mlr0 along with these */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.max1600px,.max1500px,.max1400px,.max1300px,.max1200px,.max1100px,.max1000px,
+.max900px,.max800px,.max700px,.max600px,.max500px,.max400px,.max300px,.max250px,.max200px,.max150px,.max100px,
+.max75px,.max50px
+{	margin-left: auto;
+	margin-right: auto;
+}
+.max1600px { max-width: 1600px !important; }
+.max1500px { max-width: 1500px !important; }
+.max1400px { max-width: 1400px !important; }
+.max1300px { max-width: 1300px !important; }
+.max1200px { max-width: 1200px !important; }
+.max1100px { max-width: 1100px !important; }
+.max1000px { max-width: 1000px !important; }
+.max900px  {  max-width: 900px !important; }
+.max800px  {  max-width: 800px !important; }
+.max700px  {  max-width: 700px !important; }
+.max600px  {  max-width: 600px !important; }
+.max500px  {  max-width: 500px !important; }
+.max400px  {  max-width: 400px !important; }
+.max300px  {  max-width: 300px !important; }
+.max250px  {  max-width: 250px !important; }
+.max200px  {  max-width: 200px !important; }
+.max150px  {  max-width: 150px !important; }
+.max100px  {  max-width: 100px !important; }
+.max75px   {   max-width: 75px !important; }
+.max50px   {   max-width: 50px !important; }
+
+/* Min-widths */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.min-full
+{	min-width: 100%;
+}
+.min-screen
+{	min-width: 100vw;
+}
+
+/* em-based min widths - Typically used for labels/aligning things */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.min1em, .min2em, .min3em, .min4em, .min5em,
+.min6em, .min7em, .min8em, .min9em, .min10em
+{	display: inline-block;
+}
+
+.min1em  {  min-width: 1em; }
+.min2em  {  min-width: 2em; }
+.min3em  {  min-width: 3em; }
+.min4em  {  min-width: 4em; }
+.min5em  {  min-width: 5em; }
+.min6em  {  min-width: 6em; }
+.min7em  {  min-width: 7em; }
+.min8em  {  min-width: 8em; }
+.min9em  {  min-width: 9em; }
+.min10em { min-width: 10em; }
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Margin settings */
+/* These are pre-determined settings that do not change with screen size */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Left and right */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/* MLR */
+.mlr0,.mrl0
+{	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+.mlr-auto,.mrl-auto
+{	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+/* Top (measured in pixels) */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.mt0  { margin-top: 0 !important; }
+
+.mt5  {  margin-top: 5px !important; }
+.mt10 { margin-top: 10px !important; }
+.mt15 { margin-top: 15px !important; }
+.mt20 { margin-top: 20px !important; }
+.mt30 { margin-top: 30px !important; }
+.mt40 { margin-top: 40px !important; }
+
+/* rem */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.mt0-25rem { margin-top: 0.25rem !important; }
+.mt0-5rem  { margin-top: 0.5rem !important; }
+.mt0-75rem { margin-top: 0.75rem !important; }
+.mt1rem    { margin-top: 1.0rem !important; }
+.mt1-25rem { margin-top: 1.25rem !important; }
+.mt1-5rem  { margin-top: 1.5rem !important; }
+.mt1-75rem { margin-top: 1.75rem !important; }
+.mt2rem    { margin-top: 2.0rem !important; }
+
+/* Bottom (measured in pixels) */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.mb0  { margin-bottom: 0 !important; }
+
+.mb5  {  margin-bottom: 5px !important; }
+.mb10 { margin-bottom: 10px !important; }
+.mb15 { margin-bottom: 15px !important; }
+.mb20 { margin-bottom: 20px !important; }
+.mb30 { margin-bottom: 30px !important; }
+.mb40 { margin-bottom: 40px !important; }
+
+/* rem */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.mb0-25rem { margin-bottom: 0.25rem !important; }
+.mb0-5rem  { margin-bottom: 0.5rem !important; }
+.mb0-75rem { margin-bottom: 0.75rem !important; }
+.mb1rem    { margin-bottom: 1.0rem !important; }
+.mb1-25rem { margin-bottom: 1.25rem !important; }
+.mb1-5rem  { margin-bottom: 1.5rem !important; }
+.mb1-75rem { margin-bottom: 1.75rem !important; }
+.mb2rem    { margin-bottom: 2.0rem !important; }
+
+
+/*===============================================================================================================================================*/
+/* Extra utility for parent tags and their child tags to have margin-bottom settings for all children that are not the last one */
+/* Good for generated content where it may not be clear which one will be last (or if extra content were to get inserted dynamically) */
+/*===============================================================================================================================================*/
+.parent-not-last-mb10 > :not(:last-child),
+.not-last-mb10:not(:last-child)
+{	margin-bottom: 10px;
+}
+.parent-not-last-mb20 > :not(:last-child),
+.not-last-mb20:not(:last-child)
+{	margin-bottom: 20px;
+}
+
+.parent-not-last-mb30 > :not(:last-child),
+.not-last-mb30:not(:last-child)
+{	margin-bottom: 30px;
+}
+
+.parent-not-last-mb40 > :not(:last-child),
+.not-last-mb40:not(:last-child)
+{	margin-bottom: 40px;
+}
+
+/* --- */
+.parent-not-last-mb0-25rem > :not(:last-child),
+.not-last-mb1-5rem:not(:last-child)
+{	margin-bottom: 0.25rem;
+}
+.parent-not-last-mb0-5rem > :not(:last-child),
+.not-last-mb1-5rem:not(:last-child)
+{	margin-bottom: 0.5rem;
+}
+.parent-not-last-mb0-75rem > :not(:last-child),
+.not-last-mb1-75rem:not(:last-child)
+{	margin-bottom: 0.75rem;
+}
+.parent-not-last-mb1rem > :not(:last-child),
+.not-last-mb1rem:not(:last-child)
+{	margin-bottom: 1rem;
+}
+.parent-not-last-mb1-25rem > :not(:last-child),
+.not-last-mb1-5rem:not(:last-child)
+{	margin-bottom: 1.25rem;
+}
+.parent-not-last-mb1-5rem > :not(:last-child),
+.not-last-mb1-5rem:not(:last-child)
+{	margin-bottom: 1.5rem;
+}
+.parent-not-last-mb1-75rem > :not(:last-child),
+.not-last-mb1-75rem:not(:last-child)
+{	margin-bottom: 1.75rem;
+}
+.parent-not-last-mb2rem > :not(:last-child),
+.not-last-mb2rem:not(:last-child)
+{	margin-bottom: 2rem;
+}
+
+/* Utility class for multiple P tags */
+.p-mb p:not(:last-child),
+.p-mb-direct > p:not(:last-child)
+{	margin-bottom: 1rem;
+}
+
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Padding settings */
+/* These are pre-determined settings that do not change with screen size */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* All directions - measured in pixels */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.p0  { padding: 0 !important; }
+.p10 { padding: 10px !important; }
+.p20 { padding: 20px !important; }
+
+/* rem */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.p0-25rem { padding: 0.25rem !important; }
+.p0-5rem  { padding: 0.5rem !important; }
+.p0-75rem { padding: 0.75rem !important; }
+.p1rem    { padding: 1.0rem !important; }
+.p1-25rem { padding: 1.25rem !important; }
+.p1-5rem  { padding: 1.5rem !important; }
+.p1-75rem { padding: 1.75rem !important; }
+.p2rem    { padding: 2.0rem !important; }
+
+/* Left and right */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.plr0,.prl0
+{	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.plr10,.prl10
+{	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+.plr20,.prl20
+{	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+
+/* Top (measured in pixels) */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.pt0  { padding-top: 0 !important; }
+
+.pt10 { padding-top: 10px !important; }
+.pt20 { padding-top: 20px !important; }
+
+/* Bottom (measured in pixels) */
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+.pb0  { padding-bottom: 0 !important; }
+
+.pb10 { padding-bottom: 10px !important; }
+.pb20 { padding-bottom: 20px !important; }
+
+/*===============================================================================================================================================*/
+/* Floats and overflow */
+/*===============================================================================================================================================*/
+.fl { float: left; }
+.fr { float: right; }
+.oh { overflow: hidden; }
+.ov { overflow: visible; }
+
+/*===============================================================================================================================================*/
+/* Indenting (Generally for easily formatting certain lists) */
+/*===============================================================================================================================================*/
+.indent1
+{	padding-left: 1em;
+	text-indent: -1em;
+}
+.indent2
+{	padding-left: 2em;
+	text-indent: -2em;
+}
+.indent3
+{	padding-left: 3em;
+	text-indent: -3em;
+}
+.indent4
+{	padding-left: 4em;
+	text-indent: -4em;
+}
+.indent5
+{	padding-left: 5em;
+	text-indent: -5em;
+}
+.indent6
+{	padding-left: 6em;
+	text-indent: -6em;
+}
+.indent7
+{	padding-left: 7em;
+	text-indent: -7em;
+}
+.indent8
+{	padding-left: 8em;
+	text-indent: -8em;
+}
+.indent9
+{	padding-left: 9em;
+	text-indent: -9em;
+}
+.indent10
+{	padding-left: 10em;
+	text-indent: -10em;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* Display override classes */
+/* Can be put on tags for changing their default display types */
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+.inline
+{	display: inline;
+}
+.block
+{	display: block;
+}
+.inline-block, .ib
+{	display: inline-block;
+}
+.flex
+{	display: flex;
+}
+.grid
+{	display: grid;
+}
+
+/* Forced override of display settings. These are intended to stay constant regardless of the viewport */
+/* These can also be useful when setting certain classes in JS */
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+.force-display-none
+{	display: none !important;
+}
+.force-inline
+{	display: inline !important;
+}
+.force-block
+{	display: block !important;
+}
+.force-inline-block, .force-ib
+{	display: inline-block !important;
+}
+.force-flex
+{	display: flex !important;
+}
+.force-grid
+{	display: grid !important;
+}

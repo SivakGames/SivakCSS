@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="./style-base.css" />
+	<link rel="stylesheet" href="./style-widgets.css" />
+	<link rel="stylesheet" href="./style-overlays.css" />
+	<link rel="stylesheet" href="./style-settings-layout.css" />
+	<title>Sivak's Personal CSS Library Sample</title>
+	<style>
+		header,
+		footer {
+			background-color: rebeccapurple;
+			color: White;
+			padding: 0.25rem 1rem;
+		}
+
+		main {
+			background-color: #FCFFFF;
+			flex: 1 1 0%;
+			padding: 2rem 0;
+		}
+
+		main h2 {
+			background-color: skyblue;
+			padding: 0.25rem 1rem;
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="document-wrap">
+		<header>
+			<h1>Sivak's Personal CSS Library Sample</h1>
+		</header>
+		<main>
+			<div class="content-wrap">
+
+				<div class="content">
+					<div class="sub-content p-mb">
+						<p>Showcase for my personal CSS library. Naturally, this is nowhere near as elegant as some of
+							the larger frameworks out there, but it gets the job done for me and my projects.
+							This example is just a very generic setup showcasing some basic layout classes and widgets I
+							put in the page. A real project would obviously add styles onto these as needed.</p>
+						<p>*I mainly just uploaded this to GitHub so I'd have an easy to access point for the main files
+							that I could update and download as needed.</p>
+					</div>
+					<div class="sub-content">
+						<h2>Boxes</h2>
+						<div class="box">
+							<p>Box - A simple box with BG color applied</p>
+						</div>
+						<div class="outline-box">
+							<p>Outline Box - Like a box, but with a border and typically a light background color.</p>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="sub-content p-mb">
+						<h2>Buttons</h2>
+						<p>Assorted layout of buttons</p>
+						<div class="btns">
+							<button type="button">Button</button>
+						</div>
+						<div class="btns">
+							<a href="#">Button (tags don't matter)</a>
+							<a href="#" class="arrow-icon">Button with arrow</a>
+						</div>
+						<div class="btns auto-size">
+							<a href="#">Variable size button</a>
+							<a href="#">Smaller</a>
+							<a href="#">X</a>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="sub-content p-mb">
+						<h2>Pagination</h2>
+						<p>A simple paginator. The OL tag felt appropriate for the page part, hence the use of it.</p>
+						<div class="pagination">
+							<a href="#">Prev</a>
+							<ol>
+								<li><a href="#">1</a></li>
+								<li><span class="current">2</span></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+							</ol>
+							<a href="#">Next</a>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="sub-content p-mb">
+						<h2>Breacrumb</h2>
+						<p>A simple breadcrumb navigator. This would likely go at the top of the page/content.</p>
+						<ol class="breadcrumb">
+							<li><a href="#">HOME</a></li>
+							<li><a href="#">Section</a></li>
+							<li>Title</li>
+						</ol>
+					</div>
+				</div>
+				<div class="content">
+					<div class="sub-content p-mb">
+						<h2>Pre-icon parent</h2>
+						<p>Typically used for lists that need some bullet/icon at the beginning. Also note the parent-not-last for spacing items out vertically.</p>
+						<div class="parent-not-last-mb1rem">
+							<ul class="pre-icon-parent dot ">
+								<li>Circle Item 1</li>
+								<li>Circle Item 2</li>
+							</ul>
+							<ul class="pre-icon-parent square ">
+								<li>Square Item 1</li>
+								<li>Square Item 2</li>
+							</ul>
+							<ul class="">
+								<li class="pre-icon triangle">Triangle Item 1 (can assign pre-icon to directly change a single element)</li>
+								<li class="pre-icon arrow">Arrow Item 2</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="sub-content p-mb">
+						<h2>Numeric list</h2>
+						<p>More clean way of doing lists with numbers at the start I found.</p>
+						<div class="parent-not-last-mb1rem">
+							<ol class="numeric-list">
+								<li>Circle Item 1</li>
+								<li>Circle Item 2</li>
+							</ol>
+							<ol class="numeric-list">
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+								<li>Item</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<p>Last Update: <time datetime="2021-02-14">Feb. 14, 2021</time></p>
+		</footer>
+
+		<!-- Overlays needs supplemental JS to work -->
+		<div id="document-overlays">
+			<input name="bDarken" class="visual-control" type="checkbox" />
+			<input name="bModal" class="visual-control" type="checkbox" />
+			<div class="darken"></div>
+
+			<div class="modal-wrap">
+				<div class="modal-window">
+					<div class="modal-title-bar">
+						<p class="modal-title-text">XXX</p>
+						<button class="modal-title-close" type="button" name="closeModal"></button>
+					</div>
+					<div class="modal-main">
+						<div class="modal-content">
+							<div class="blah">AAAA</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
