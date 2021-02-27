@@ -1,16 +1,27 @@
 <!doctype html>
-<html>
+<html data-update="2021-02-26">
 
 <head>
+	<!-- Encoding and viewport -->
+	<meta charset="UTF-8" />
+	<meta property="og:locale" content="en-us" />
+	<meta property="og:type" content="website" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Title -->
+	<title>Sivak's Personal CSS Library Sample</title>
+
+	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./style-base.css" />
 	<link rel="stylesheet" href="./style-widgets.css" />
 	<link rel="stylesheet" href="./style-overlays.css" />
 	<link rel="stylesheet" href="./style-settings-layout.css" />
-	<title>Sivak's Personal CSS Library Sample</title>
+
+	<!-- In a production environment, some kind of override CSS would be use for the actual customization. This is a demo, so this'll do. -->
 	<style>
 		header,
 		footer {
-			background-color: rebeccapurple;
+			background-color: RebeccaPurple;
 			color: White;
 			padding: 0.25rem 1rem;
 		}
@@ -22,9 +33,23 @@
 		}
 
 		main h2 {
-			background-color: skyblue;
+			background-color: CornflowerBlue;
+			border-radius: 0.25em;
 			padding: 0.25rem 1rem;
 			margin-bottom: 2rem;
+			color: LightCyan;
+			font-size: 1.25rem;
+		}
+
+		main h3 {
+			background-color: SkyBlue;
+			border-radius: 0.25em;
+			padding: 0.25rem 1rem;
+			margin-bottom: 1rem;
+		}
+		form .switch
+		{	--onBG: #70F0FF;
+
 		}
 	</style>
 </head>
@@ -35,19 +60,26 @@
 			<h1>Sivak's Personal CSS Library Sample</h1>
 		</header>
 		<main>
+			<!-- Content wrap is used to divide the sections and is full-width -->
 			<div class="content-wrap">
-
+				<!-- Content acts as a container, has a little bit of padding on the sides (for mobile screens) and large margins on the bottom -->
 				<div class="content">
-					<div class="sub-content p-mb">
-						<p>Showcase for my personal CSS library. Naturally, this is nowhere near as elegant as some of
-							the larger frameworks out there, but it gets the job done for me and my projects.
-							This example is just a very generic setup showcasing some basic layout classes and widgets I
-							put in the page. A real project would obviously add styles onto these as needed.</p>
-						<p>*I mainly just uploaded this to GitHub so I'd have an easy to access point for the main files
-							that I could update and download as needed.</p>
-					</div>
+					<h2>Intro</h2>
+					<!-- Sub-content is a container within the container. Has smaller vertical margins than content -->
 					<div class="sub-content">
-						<h2>Boxes</h2>
+						<div class="p-mb">
+							<p>Showcase for my personal CSS library. Naturally, this is nowhere near as elegant as some
+								of the larger frameworks out there, but it gets the job done for me and my projects.
+								This example is just a very generic setup showcasing some basic layout classes and
+								widgets I
+								put in the page. A real project would obviously add styles onto these as needed.</p>
+							<p>*I mainly just uploaded this to GitHub so I'd have an easy to access point for the main
+								files that I could update and download as needed.</p>
+						</div>
+					</div>
+					<div class="sub-content p-mb">
+						<h3>Boxes</h3>
+						<p>Just a rectangular box with padding.</p>
 						<div class="box">
 							<p>Box - A simple box with BG color applied</p>
 						</div>
@@ -57,8 +89,9 @@
 					</div>
 				</div>
 				<div class="content">
+					<h2>Widget Showcase (Simple)</h2>
 					<div class="sub-content p-mb">
-						<h2>Buttons</h2>
+						<h3>Buttons</h3>
 						<p>Assorted layout of buttons</p>
 						<div class="btns">
 							<button type="button">Button</button>
@@ -76,8 +109,9 @@
 				</div>
 				<div class="content">
 					<div class="sub-content p-mb">
-						<h2>Pagination</h2>
-						<p>A simple paginator. The OL tag felt appropriate for the page part, hence the use of it.</p>
+						<h3>Pagination</h3>
+						<p>A simple paginator. The OL tag felt appropriate for the page list part, hence the use of it.
+							Current is a class to indicate the current page.</p>
 						<div class="pagination">
 							<a href="#">Prev</a>
 							<ol>
@@ -92,7 +126,7 @@
 				</div>
 				<div class="content">
 					<div class="sub-content p-mb">
-						<h2>Breacrumb</h2>
+						<h3>Breacrumb</h3>
 						<p>A simple breadcrumb navigator. This would likely go at the top of the page/content.</p>
 						<ol class="breadcrumb">
 							<li><a href="#">HOME</a></li>
@@ -103,8 +137,9 @@
 				</div>
 				<div class="content">
 					<div class="sub-content p-mb">
-						<h2>Pre-icon parent</h2>
-						<p>Typically used for lists that need some bullet/icon at the beginning. Also note the parent-not-last for spacing items out vertically.</p>
+						<h3>Pre-icon parent</h3>
+						<p>Typically used for lists that need some bullet/icon at the beginning. Also note the
+							parent-not-last for spacing items out vertically.</p>
 						<div class="parent-not-last-mb1rem">
 							<ul class="pre-icon-parent dot ">
 								<li>Circle Item 1</li>
@@ -115,7 +150,8 @@
 								<li>Square Item 2</li>
 							</ul>
 							<ul class="">
-								<li class="pre-icon triangle">Triangle Item 1 (can assign pre-icon to directly change a single element)</li>
+								<li class="pre-icon triangle">Triangle Item 1 (can assign pre-icon to directly change a
+									single element)</li>
 								<li class="pre-icon arrow">Arrow Item 2</li>
 							</ul>
 						</div>
@@ -123,7 +159,7 @@
 				</div>
 				<div class="content">
 					<div class="sub-content p-mb">
-						<h2>Numeric list</h2>
+						<h3>Numeric list</h3>
 						<p>More clean way of doing lists with numbers at the start I found.</p>
 						<div class="parent-not-last-mb1rem">
 							<ol class="numeric-list">
@@ -145,6 +181,107 @@
 								<li>Item</li>
 							</ol>
 						</div>
+					</div>
+				</div>
+				<div class="content">
+					<h2>Forms</h2>
+					<div class="sub-content p-mb">
+						<p>Some basic classes for making forms and for improving on the base visuals, all of which can be further customized in separate CSS.</p>
+						<form id="sampler-form" action="./index.html#sampler-form" method="get">
+							<h3>Text inputs</h3>
+							<p>Input holder is good for making input boxes that need to be variable-width or scale with the screen.
+								The actual layout of the form can vary greatly by page. This is just a simple example.</p>
+							<div class="parent-not-last-mb1-5rem mb3rem">
+								<div>
+									<label for="sample-text0">Name</label>
+									<div class="input-holder"><input type="text" id="sample-text0" name="sample-text0" /></div>
+								</div>
+								<div>
+									<label for="sample-textarea0">Message</label>
+									<div class="input-holder">
+										<textarea id="sample-textarea0" name="sample-textarea0"></textarea>
+									</div>
+								</div>
+								<div>
+									<label for="sample-select0">Select Box</label>
+									<div class="input-holder">
+										<select id="sample-select0" name="sample-select0">
+											<option>1</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<h3>Checkboxes</h3>
+							<p>Utilizes CSS-drawn graphic for checkboxes for a cross-browser visual.</p>
+							<div class="parent-not-last-mb1-5rem mb3rem">
+								<div>
+									<div>
+										<label>
+											<span class="checkbox-holder">
+												<input type="checkbox" id="sample-check0" name="sample-check0" />
+												<span class="check"></span>
+											</span>
+											<span>Text can be contained within a label to check the box if the user clicks on any of the contained text.</span>
+										</label>
+									</div>
+								</div>
+								<div>
+									<div>
+										<label>
+											<span class="checkbox-holder">
+												<input type="checkbox" id="sampler-check1" name="sample-check1" />
+												<span class="check"></span>
+											</span>
+										</label>
+										<span>Text can also be outside the label if you don't want click functionality on everything.</span>
+									</div>
+								</div>
+							</div>
+							<h3>Switches</h3>
+							<p>A visual alternative to a checkbox</p>
+							<div class="parent-not-last-mb1-5rem mb3rem">
+								<div>
+									<div>
+										<label>
+											<span class="switch-holder">
+												<input type="checkbox" id="sample-switch0" name="sample-switch0" />
+												<span class="switch"></span>
+											</span>
+											<span>Turn off/on</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							<h3>Radio</h3>
+							<p>Like with check boxes, these use CSS-drawn graphics.</p>
+							<div class="parent-not-last-mb1-5rem mb3rem">
+								<div>
+									<div>
+										<label>
+											<span class="radio-holder">
+												<input type="radio" id="sample-radio0" name="sample-radio" value="0" checked />
+												<span class="radio"></span>
+											</span>
+											<span>Option 1</span>
+										</label>
+									</div>
+									<div>
+										<label>
+											<span class="radio-holder">
+												<input type="radio" id="sample-radio0" name="sample-radio" value="1" />
+												<span class="radio"></span>
+											</span>
+											<span>Option 2</span>
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="btns">
+								<button type="submit" class="arrow-icon">Submit</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

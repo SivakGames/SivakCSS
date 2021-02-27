@@ -1,3 +1,16 @@
+html
+{	
+	--checkingBG: #DFF;
+	--checkedBG: #77F;
+	--uncheckingBG: #BDD;
+	--checkColor: #FFF;
+
+	--switchOffBG: #888;
+	--switchOffColor: #CCC;
+	--switchOnBG: #77F;
+	--switchOnColor: #FFF;
+}
+
 /*===============================================================================================================================================*/
 /*===============================================================================================================================================*/
 /* 	Boxes (general)
@@ -9,13 +22,13 @@
 .box
 {	background-color: #EEE;
 	padding: 1rem;
-	margin: 0 auto;
+	margin: 0;
 }
 .outline-box
-{	background-color: #FFF;
+{	background-color: white;
 	padding: 1rem;
 	border: 1px solid;
-	margin: 0 auto;
+	margin: 0;
 }
 
 .box:not(:last-child),
@@ -24,7 +37,7 @@
 }
 
 .box.white
-{	background-color: #FFF;
+{	background-color: white;
 }
 
 /*===============================================================================================================================================*/
@@ -39,7 +52,7 @@
 {	display: flex;
 	justify-content: space-between;
 	text-align: center;
-	margin: 0 auto;
+	margin: 0;
 }
 
 .btns:not(:last-child)
@@ -93,7 +106,7 @@
 		display: flex;
 		width: auto;
 		max-width: none;
-		margin: 0 auto 2rem;
+		margin: 0 0 2rem;
 	}
 	.btns.smt-break > :last-child
 	{	margin-bottom: 0;
@@ -171,8 +184,8 @@
 }
 
 .breadcrumb a
-{	color: RoyalBlue;
-	color: var(--link-color, RoyalBlue);
+{	color: DeepSkyBlue;
+	color: var(--link-color, DeepSkyBlue);
 }
 .breadcrumb a:hover
 {	color: SkyBlue;
@@ -373,7 +386,7 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 }
 
 .sub-menu 
-{ 	background-color: #E0E0E0;
+{ 	background-color: #DDD;
 	visibility: hidden;
 	opacity: 0;
 	position: absolute;
@@ -411,7 +424,6 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 	position: absolute;
 	left: 0;
 	top: 0;
-	
 }
 
 /*===============================================================================================================================================*/
@@ -469,4 +481,191 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 	display: inline-block;
 	margin: 0 5px 0 0;
 	text-indent: 0;
+}
+
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/*  Input visuals (checks/radios)
+----------------------------------------------------------------------------
+/*===============================================================================================================================================*/
+/*===============================================================================================================================================*/
+/* These are to make a better cross-browser visual for checks and radios. Also included are on/off switches
+
+/* Checkboxes/Radios */
+/* ---------------------------------------------------------------------------- */
+.checkbox-holder,
+.radio-holder
+{	
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1em;
+	font-size: max(1em, 16px);
+	line-height: 1em;
+}
+
+
+/* */
+.checkbox-holder input[type='checkbox'],
+.radio-holder input[type='radio']
+{	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+/* */
+.checkbox-holder .check,
+.radio-holder .radio
+{	border: 1px solid;
+	width: 1em;
+	height: 1em;
+	position: relative;
+	display: block;
+	box-sizing: content-box;
+	transition: background-color 0.1s
+}
+
+.checkbox-holder .check
+{	border-radius: 0.125em;
+}
+
+.radio-holder .radio
+{	border-radius: 50%;
+}
+
+/* */
+.checkbox-holder .check::before,
+.radio-holder .radio::before
+{	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.125s;
+}
+
+.checkbox-holder .check::before
+{	background-color: transparent;
+	width: 0.375em;
+	height: 0.7em;
+	border-width: 0.175em;
+	border-style: solid;
+	border-left-width: 0;
+	border-top-width: 0;
+	margin-left: -0.175em;
+	margin-top: -0.4em;
+	transform: rotate(45deg);
+}
+.radio-holder .radio::before
+{	
+	background-color: transparent;
+	width: 0.5em;
+	height: 0.5em;
+	margin-left: -0.25em;
+	margin-top: -0.25em;
+	border-radius: 50%;
+
+}
+
+/* Activating */
+.checkbox-holder input[type='checkbox']:active ~ .check,
+.radio-holder input[type='radio']:active ~ .radio
+{	
+	background-color: lightcyan;
+	background-color: var(--checkingBG, lightcyan);
+}
+
+/* Deactivating */
+.checkbox-holder input[type='checkbox']:active:checked ~ .check,
+.radio-holder input[type='radio']:active:checked ~ .radio
+{	
+	background-color: lightblue;
+	background-color: var(--uncheckingBG, lightblue);
+}
+
+/* ---- */
+.checkbox-holder input[type='checkbox']:checked ~ .check::before,
+.radio-holder input[type='radio']:checked ~ .radio::before
+{	opacity: 1;
+	visibility: visible;
+}
+
+/* --- */
+.checkbox-holder input[type='checkbox']:checked ~ .check
+{	background-color: dodgerblue;
+	background-color: var(--checkedBG, dodgerblue);
+}
+
+.checkbox-holder input[type='checkbox']:checked ~ .check::before
+{	color: White;
+	color: var(--checkColor, White);
+}
+
+.radio-holder input[type='radio']:checked ~ .radio
+{	background-color: White;
+}
+
+.radio-holder input[type='radio']:checked ~ .radio::before
+{	background-color: dodgerblue;
+	background-color: var(--checkedBG, dodgerblue);
+}
+
+
+/* Switch */
+/* ---------------------------------------------------------------------------- */
+.switch-holder
+{	
+	font-size: 1em;
+	font-size: max(1em, 16px);
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* */
+.switch-holder input[type='checkbox']
+{	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.switch-holder .switch
+{	background-color: gray;
+	background-color: var(--switchOffBG, gray);
+	border: 1px solid;
+	border-radius: 1em;
+	width: 2.4em;
+	height: 1.2em;
+	position: relative;
+	display: block;
+	box-sizing: content-box;
+	transition: background-color 0.15s
+}
+
+.switch-holder .switch::before
+{	background-color: lightgray;
+	background-color: var(--switchOffColor,lightgray);
+	content: "";
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 50%;
+	left: 0.1em;
+
+	box-sizing: border-box;
+	border-radius: 50%;
+	margin-top: -0.5em;
+	transition: left 0.125s;
+}
+
+/* ++++++++++++ */
+.switch-holder input[type='checkbox']:checked ~ .switch
+{	background-color: dodgerblue;
+	background-color: var(--switchOnBG, dodgerblue);
+	
+}
+.switch-holder input[type='checkbox']:checked ~ .switch::before
+{	background-color: lightcyan;
+	background-color: var(--switchOnColor, lightcyan);
+	left: calc(100% - 1.1em);
 }

@@ -389,6 +389,14 @@ textarea
 .mt1-5rem  { margin-top: 1.5rem !important; }
 .mt1-75rem { margin-top: 1.75rem !important; }
 .mt2rem    { margin-top: 2.0rem !important; }
+.mt2-25rem { margin-top: 2.25rem !important; }
+.mt2-5rem  { margin-top: 2.5rem !important; }
+.mt2-75rem { margin-top: 2.75rem !important; }
+.mt3rem    { margin-top: 3.0rem !important; }
+.mt3-25rem { margin-top: 3.25rem !important; }
+.mt3-5rem  { margin-top: 3.5rem !important; }
+.mt3-75rem { margin-top: 3.75rem !important; }
+.mt4rem    { margin-top: 4.0rem !important; }
 
 /* Bottom (measured in pixels) */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -411,66 +419,87 @@ textarea
 .mb1-5rem  { margin-bottom: 1.5rem !important; }
 .mb1-75rem { margin-bottom: 1.75rem !important; }
 .mb2rem    { margin-bottom: 2.0rem !important; }
+.mb2-25rem { margin-bottom: 2.25rem !important; }
+.mb2-5rem  { margin-bottom: 2.5rem !important; }
+.mb2-75rem { margin-bottom: 2.75rem !important; }
+.mb3rem    { margin-bottom: 3.0rem !important; }
+.mb3-25rem { margin-bottom: 3.25rem !important; }
+.mb3-5rem  { margin-bottom: 3.5rem !important; }
+.mb3-75rem { margin-bottom: 3.75rem !important; }
+.mb4rem    { margin-bottom: 4.0rem !important; }
 
 
 /*===============================================================================================================================================*/
 /* Extra utility for parent tags and their child tags to have margin-bottom settings for all children that are not the last one */
 /* Good for generated content where it may not be clear which one will be last (or if extra content were to get inserted dynamically) */
 /*===============================================================================================================================================*/
-.parent-not-last-mb10 > :not(:last-child),
-.not-last-mb10:not(:last-child)
+/* Measured in pixels */
+.parent-not-last-mb10 > :not(:last-child), .not-last-mb10:not(:last-child)
 {	margin-bottom: 10px;
 }
-.parent-not-last-mb20 > :not(:last-child),
-.not-last-mb20:not(:last-child)
+.parent-not-last-mb20 > :not(:last-child), .not-last-mb20:not(:last-child)
 {	margin-bottom: 20px;
 }
 
-.parent-not-last-mb30 > :not(:last-child),
-.not-last-mb30:not(:last-child)
+.parent-not-last-mb30 > :not(:last-child), .not-last-mb30:not(:last-child)
 {	margin-bottom: 30px;
 }
 
-.parent-not-last-mb40 > :not(:last-child),
-.not-last-mb40:not(:last-child)
+.parent-not-last-mb40 > :not(:last-child), .not-last-mb40:not(:last-child)
 {	margin-bottom: 40px;
 }
 
-/* --- */
-.parent-not-last-mb0-25rem > :not(:last-child),
-.not-last-mb1-5rem:not(:last-child)
+/* Measures in rems */
+.parent-not-last-mb0-25rem > :not(:last-child), .not-last-mb0-25rem:not(:last-child)
 {	margin-bottom: 0.25rem;
 }
-.parent-not-last-mb0-5rem > :not(:last-child),
-.not-last-mb1-5rem:not(:last-child)
+.parent-not-last-mb0-5rem > :not(:last-child), .not-last-mb0-5rem:not(:last-child)
 {	margin-bottom: 0.5rem;
 }
-.parent-not-last-mb0-75rem > :not(:last-child),
-.not-last-mb1-75rem:not(:last-child)
+.parent-not-last-mb0-75rem > :not(:last-child), .not-last-mb0-75rem:not(:last-child)
 {	margin-bottom: 0.75rem;
 }
-.parent-not-last-mb1rem > :not(:last-child),
-.not-last-mb1rem:not(:last-child)
+.parent-not-last-mb1rem > :not(:last-child), .not-last-mb1rem:not(:last-child)
 {	margin-bottom: 1rem;
 }
-.parent-not-last-mb1-25rem > :not(:last-child),
-.not-last-mb1-5rem:not(:last-child)
+.parent-not-last-mb1-25rem > :not(:last-child), .not-last-mb1-25rem:not(:last-child)
 {	margin-bottom: 1.25rem;
 }
-.parent-not-last-mb1-5rem > :not(:last-child),
-.not-last-mb1-5rem:not(:last-child)
+.parent-not-last-mb1-5rem > :not(:last-child), .not-last-mb1-5rem:not(:last-child)
 {	margin-bottom: 1.5rem;
 }
-.parent-not-last-mb1-75rem > :not(:last-child),
-.not-last-mb1-75rem:not(:last-child)
+.parent-not-last-mb1-75rem > :not(:last-child), .not-last-mb1-75rem:not(:last-child)
 {	margin-bottom: 1.75rem;
 }
-.parent-not-last-mb2rem > :not(:last-child),
-.not-last-mb2rem:not(:last-child)
+.parent-not-last-mb2rem > :not(:last-child), .not-last-mb2rem:not(:last-child)
+{	margin-bottom: 2rem;
+}
+.parent-not-last-mb2-25rem > :not(:last-child), .not-last-mb2-25rem:not(:last-child)
+{	margin-bottom: 1.25rem;
+}
+.parent-not-last-mb2-5rem > :not(:last-child), .not-last-mb2-5rem:not(:last-child)
+{	margin-bottom: 1.5rem;
+}
+.parent-not-last-mb2-75rem > :not(:last-child), .not-last-mb2-75rem:not(:last-child)
+{	margin-bottom: 1.75rem;
+}
+.parent-not-last-mb3rem > :not(:last-child), .not-last-mb3rem:not(:last-child)
+{	margin-bottom: 2rem;
+}
+.parent-not-last-mb3-25rem > :not(:last-child), .not-last-mb3-25rem:not(:last-child)
+{	margin-bottom: 1.25rem;
+}
+.parent-not-last-mb3-5rem > :not(:last-child), .not-last-mb3-5rem:not(:last-child)
+{	margin-bottom: 1.5rem;
+}
+.parent-not-last-mb3-75rem > :not(:last-child), .not-last-mb3-75rem:not(:last-child)
+{	margin-bottom: 1.75rem;
+}
+.parent-not-last-mb4rem > :not(:last-child), .not-last-mb4rem:not(:last-child)
 {	margin-bottom: 2rem;
 }
 
-/* Utility class for multiple P tags */
+/* Extra Utility class for multiple P tags (good for when there's a bunch of plain text that needs spacing) */
 .p-mb p:not(:last-child),
 .p-mb-direct > p:not(:last-child)
 {	margin-bottom: 1rem;
