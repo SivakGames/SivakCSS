@@ -239,6 +239,7 @@
 								</div>
 							</div>
 							<h3>Switches</h3>
+							
 							<p>A visual alternative to a checkbox</p>
 							<div class="parent-not-last-mb1-5rem mb3rem">
 								<div>
@@ -284,13 +285,14 @@
 						</form>
 					</div>
 				</div>
+				
 			</div>
 		</main>
 		<footer>
-			<p>Last Update: <time datetime="2021-02-14">Feb. 27, 2021</time></p>
+			<p>Last Update: <time datetime="2021-02-28">Feb. 28, 2021</time></p>
 		</footer>
 
-		<!-- Overlays needs supplemental JS to work -->
+		<!-- Overlays need supplemental JS to work -->
 		<div id="document-overlays">
 			<input name="bDarken" class="visual-control" type="checkbox" />
 			<input name="bModal" class="visual-control" type="checkbox" />
@@ -299,18 +301,27 @@
 			<div class="modal-wrap">
 				<div class="modal-window">
 					<div class="modal-title-bar">
-						<p class="modal-title-text">XXX</p>
+						<p class="modal-title-text">Modal Window Title</p>
 						<button class="modal-title-close" type="button" name="closeModal"></button>
 					</div>
 					<div class="modal-main">
 						<div class="modal-content">
-							<div class="blah">AAAA</div>
+							<div class="blah" style="max-width: 800px;max-height:500px;">
+								<p>Text, etc. would go in here.
+									<br><br>
+									Ideally, it would be copied into modal-content from a source with JS instead of being hard-coded like this.
+									<br><br>
+									If the window gets too tall and goes off-screen, a scroll bar will automatically be added to it to accomodate.
+									<br><br>
+									Said scroll bar is good for smaller screens.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</body>
 
+</body>
 </html>
