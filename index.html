@@ -1,63 +1,40 @@
 <!doctype html>
-<html>
+<html data-theme="dark">
 
 <head>
 	<!-- Encoding and viewport -->
 	<meta charset="UTF-8" />
 	<meta property="og:locale" content="en-us" />
 	<meta property="og:type" content="website" />
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- Title -->
 	<title>Sivak's Personal CSS Library Sample</title>
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="./style-base.css" />
-	<link rel="stylesheet" href="./style-widgets.css" />
-	<link rel="stylesheet" href="./style-overlays.css" />
-	<link rel="stylesheet" href="./style-settings-layout.css" />
+	<link rel="stylesheet" href="./css/style-base.css" />
+	<link rel="stylesheet" href="./css/style-settings-layout.css" />
+	<link rel="stylesheet" href="./css/style-widgets.css" />
+	<script src="./js/script-dark-mode.js"></script>
 
-	<!-- In a production environment, some kind of override CSS would be use for the actual customization. This is a demo, so this'll do. -->
-	<style>
-		header,
-		footer {
-			background-color: RebeccaPurple;
-			color: White;
-			padding: 0.25rem 1rem;
-		}
+	<!-- Simple modal -->
+	<link rel="stylesheet" href="./simple-modal/simple-modal.css" />
+	<script src="./simple-modal/simple-modal.js"></script>
 
-		main {
-			background-color: #FCFFFF;
-			flex: 1 1 0%;
-			padding: 2rem 0;
-		}
+	<!-- Stylesheet for this demo -->
+	<link rel="stylesheet" href="./demo.css" />
 
-		main h2 {
-			background-color: CornflowerBlue;
-			border-radius: 0.25em;
-			padding: 0.25rem 1rem;
-			margin-bottom: 2rem;
-			color: LightCyan;
-			font-size: 1.25rem;
-		}
-
-		main h3 {
-			background-color: SkyBlue;
-			border-radius: 0.25em;
-			padding: 0.25rem 1rem;
-			margin-bottom: 1rem;
-		}
-		form .switch
-		{	--onBG: #70F0FF;
-
-		}
-	</style>
 </head>
 
 <body>
 	<div id="document-wrap">
-		<header>
+		<header class="flex sb">
 			<h1>Sivak's Personal CSS Library Sample</h1>
+			<nav onClick="toggleDarkMode();">
+				<var>☀️ <span>Light Mode</span></var>
+				<var>🌙 <span>Dark Mode</span></var>
+			</nav>
 		</header>
 		<main>
 			<!-- Content wrap is used to divide the sections and is full-width -->
@@ -75,6 +52,7 @@
 								put in the page. A real project would obviously add styles onto these as needed.</p>
 							<p>*I mainly just uploaded this to GitHub so I'd have an easy to access point for the main
 								files that I could update and download as needed.</p>
+							<p>Testing <a href="#">link colors</a></p>
 						</div>
 					</div>
 					<div class="sub-content p-mb">
@@ -84,7 +62,7 @@
 							<p>Box - A simple box with BG color applied</p>
 						</div>
 						<div class="outline-box">
-							<p>Outline Box - Like a box, but with a border and typically a light background color.</p>
+							<p>Outline Box - Like a box, but with a border and typically the body's background color.</p>
 						</div>
 					</div>
 				</div>
@@ -92,7 +70,7 @@
 					<h2>Widget Showcase (Simple)</h2>
 					<div class="sub-content p-mb">
 						<h3>Buttons</h3>
-						<p>Assorted layout of buttons</p>
+						<p>Assorted layout of buttons. In a real app, further styling would be applied.</p>
 						<div class="btns">
 							<button type="button">Button</button>
 						</div>
@@ -110,9 +88,10 @@
 				<div class="content">
 					<div class="sub-content p-mb">
 						<h3>Pagination</h3>
-						<p>A simple paginator. The OL tag felt appropriate for the page list part, hence the use of it.
-							Current is a class to indicate the current page.</p>
-						<div class="pagination">
+						<p>A simple paginator. The OL tag felt appropriate for the page list part, 
+							hence the use of it. Padding will be applied to a tags or span tags within.
+							"current" is a class to indicate the current page.</p>
+						<nav class="pagination">
 							<a href="#">Prev</a>
 							<ol>
 								<li><a href="#">1</a></li>
@@ -121,12 +100,12 @@
 								<li><a href="#">4</a></li>
 							</ol>
 							<a href="#">Next</a>
-						</div>
+						</nav>
 					</div>
 				</div>
 				<div class="content">
 					<div class="sub-content p-mb">
-						<h3>Breacrumb</h3>
+						<h3>Breadcrumb</h3>
 						<p>A simple breadcrumb navigator. This would likely go at the top of the page/content.</p>
 						<ol class="breadcrumb">
 							<li><a href="#">HOME</a></li>
@@ -140,7 +119,7 @@
 						<h3>Pre-icon parent</h3>
 						<p>Typically used for lists that need some bullet/icon at the beginning. Also note the
 							parent-not-last for spacing items out vertically.</p>
-						<div class="parent-not-last-mb1rem">
+						<div class="parent-not-last-mb1">
 							<ul class="pre-icon-parent dot ">
 								<li>Circle Item 1</li>
 								<li>Circle Item 2</li>
@@ -161,7 +140,7 @@
 					<div class="sub-content p-mb">
 						<h3>Numeric list</h3>
 						<p>More clean way of doing lists with numbers at the start I found.</p>
-						<div class="parent-not-last-mb1rem">
+						<div class="parent-not-last-mb1">
 							<ol class="numeric-list">
 								<li>Circle Item 1</li>
 								<li>Circle Item 2</li>
@@ -184,6 +163,31 @@
 					</div>
 				</div>
 				<div class="content">
+					<div class="sub-content p-mb">
+						<h3>Sub menu</h3>
+						<p>Mouse over the parent element to make a sub menu appear. This is just a basic example.</p>
+						<div class="parent-not-last-mb2">
+							<div class="sub-menu-parent">
+								<div>Hover to make sub menu appear</div>
+								<ul class="sub-menu">
+									<li>aaa</li>
+									<li>bbbbbb</li>
+									<li>ccccccccc</li>
+								</ul>
+							</div>
+							<div class="sub-menu-parent">
+								<div>Sub menu is full width here</div>
+								<ul class="sub-menu w-full">
+									<li>aaa</li>
+									<li>bbbbbb</li>
+									<li>ccccccccc</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="content">
 					<h2>Forms</h2>
 					<div class="sub-content p-mb">
 						<p>Some basic classes for making forms and for improving on the base visuals, all of which can be further customized in separate CSS.</p>
@@ -191,7 +195,7 @@
 							<h3>Text inputs</h3>
 							<p>Input holder is good for making input boxes that need to be variable-width or scale with the screen.
 								The actual layout of the form can vary greatly by page. This is just a simple example.</p>
-							<div class="parent-not-last-mb1-5rem mb3rem">
+							<div class="parent-not-last-mb1-5 mb3">
 								<div>
 									<label for="sample-text0">Name</label>
 									<div class="input-holder"><input type="text" id="sample-text0" name="sample-text0" /></div>
@@ -199,7 +203,7 @@
 								<div>
 									<label for="sample-textarea0">Message</label>
 									<div class="input-holder">
-										<textarea id="sample-textarea0" name="sample-textarea0"></textarea>
+										<textarea id="sample-textarea0" name="sample-textarea0" required></textarea>
 									</div>
 								</div>
 								<div>
@@ -214,15 +218,15 @@
 							</div>
 							<h3>Checkboxes</h3>
 							<p>Utilizes CSS-drawn graphic for checkboxes for a cross-browser visual.</p>
-							<div class="parent-not-last-mb1-5rem mb3rem">
+							<div class="parent-not-last-mb1-5 mb3">
 								<div>
 									<div>
 										<label>
 											<span class="checkbox-holder">
 												<input type="checkbox" id="sample-check0" name="sample-check0" />
 												<span class="check"></span>
+												<span>Text can be contained within a label to check the box if the user clicks on any of the contained text.</span>
 											</span>
-											<span>Text can be contained within a label to check the box if the user clicks on any of the contained text.</span>
 										</label>
 									</div>
 								</div>
@@ -241,7 +245,7 @@
 							<h3>Switches</h3>
 							
 							<p>A visual alternative to a checkbox</p>
-							<div class="parent-not-last-mb1-5rem mb3rem">
+							<div class="parent-not-last-mb1-5 mb3">
 								<div>
 									<div>
 										<label>
@@ -256,15 +260,16 @@
 							</div>
 							<h3>Radio</h3>
 							<p>Like with check boxes, these use CSS-drawn graphics.</p>
-							<div class="parent-not-last-mb1-5rem mb3rem">
+							<div class="parent-not-last-mb1-5 mb3">
 								<div>
 									<div>
 										<label>
 											<span class="radio-holder">
 												<input type="radio" id="sample-radio0" name="sample-radio" value="0" checked />
 												<span class="radio"></span>
+												<span>Option 1</span>
 											</span>
-											<span>Option 1</span>
+											
 										</label>
 									</div>
 									<div>
@@ -272,8 +277,18 @@
 											<span class="radio-holder">
 												<input type="radio" id="sample-radio0" name="sample-radio" value="1" />
 												<span class="radio"></span>
+												<span>Option 2</span>
 											</span>
-											<span>Option 2</span>
+											
+										</label>
+									</div>
+									<div>
+										
+											<span class="radio-holder">
+												<input type="radio" id="sample-radio0" name="sample-radio" value="2" disabled />
+												<span class="radio"></span>
+												<span>Option 3 (disabled)</span>
+											</span>
 										</label>
 									</div>
 								</div>
@@ -285,43 +300,45 @@
 						</form>
 					</div>
 				</div>
-				
-			</div>
-		</main>
-		<footer>
-			<p>Last Update: <time datetime="2021-02-28">Feb. 28, 2021</time></p>
-		</footer>
-
-		<!-- Overlays need supplemental JS to work -->
-		<div id="document-overlays">
-			<input name="bDarken" class="visual-control" type="checkbox" />
-			<input name="bModal" class="visual-control" type="checkbox" />
-			<div class="darken"></div>
-
-			<div class="modal-wrap">
-				<div class="modal-window">
-					<div class="modal-title-bar">
-						<p class="modal-title-text">Modal Window Title</p>
-						<button class="modal-title-close" type="button" name="closeModal"></button>
+				<div class="content">
+					<h2>Modals (requires simple-modal library to be included)</h2>
+					<div class="sub-content p-mb">
+						Documentation can be found in the .js file
 					</div>
-					<div class="modal-main">
-						<div class="modal-content">
-							<div class="blah" style="max-width: 800px;max-height:500px;">
-								<p>Text, etc. would go in here.
-									<br><br>
-									Ideally, it would be copied into modal-content from a source with JS instead of being hard-coded like this.
-									<br><br>
-									If the window gets too tall and goes off-screen, a scroll bar will automatically be added to it to accomodate.
-									<br><br>
-									Said scroll bar is good for smaller screens.
-								</p>
+					<div class="sub-content p-mb">
+						<p>Open Modal 1: <em data-modal-open-id="modal01" class="text-link-color">Here</em></p>
+						<p>Open Modal 2: <em data-modal-open-id="modal02" class="text-link-color">Here</em></p>
+						<div id="modal-content" class="force-display-none">
+							<div id="modal01">
+								<p>Modal Window example 1</p>
+							</div>
+							<div id="modal02" class="p-mb">
+								<p>Modal Window example 2</p>
+								<p>More text... More text... More text... More text... More text... More text... More text... More text... More text... More text... More text...</p>
+								<nav class="btns">
+									<button type="button" onClick="closeSimpleModal();">Cancel</button>
+									<button type="submit">Submit</button>
+								</nav>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</main>
+		<footer>
+			<p>Last Update: <time datetime="2021-08-13">Aug. 13, 2021</time></p>
+		</footer>
+
 	</div>
+
+<script>
+	//window.addEventListener("load", initSimpleModal);
+	let args = {
+		extraClassName: "demo-theming",
+		insertNode: "#document-wrap"
+	}
+	initSimpleModal(args);
+</script>
 
 </body>
 </html>

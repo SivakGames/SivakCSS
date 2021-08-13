@@ -1,7 +1,7 @@
 /*===============================================================================================================================================*/
 /* 
 	General purpose CSS 
-	Revised and Updated: 2/28/2021
+	Revised and Updated: 8/13/2021
 */
 /*===============================================================================================================================================*/
 
@@ -9,17 +9,60 @@
 /* Font setting variables */
 /*===============================================================================================================================================*/
 :root
-{	--text-color: #333;
-	--link-color: #0090DC;
-	--link-hover-color: #10A0EC;
+{	
+	--light-theme-body-bg: #FFF;
+	--light-theme-text-color: #333;
+	--light-theme-link-color: #0090DC;
+	--light-theme-link-hover-color: #10A0EC;
+	--light-theme-widget-bg: #DDD;
+	--light-theme-widget-bg-highlight: #EEE;
+
+	--dark-theme-body-bg: #333;
+	--dark-theme-text-color: #F0F0F0;
+	--dark-theme-link-color: #30D0EC;
+	--dark-theme-link-hover-color: #40E0FC;
+	--dark-theme-widget-bg: #666;
+	--dark-theme-widget-bg-highlight: #777;
+
 	--eng-serif-fonts: "Times New Roman", "Times", serif;
 	--eng-sans-serif-fonts: "Verdana", "Geneva", "Arial", sans-serif;
 	--mono-fonts: "Consolas", "Monaco", "Liberation Mono", "Courier New", monospace;
+	--jap-serif-fonts: "Hiragino Mincho ProN", "YuMincho", "Yu Mincho", "ＭＳ 明朝", "MS Mincho", "HiraMinProN-W3", "TakaoExMincho", "Droid Sans Japanese", serif;
+	--jap-sans-serif-fonts: "Hiragino Kaku Gothic ProN", "Meiryo", "YuGothic", "Yu Gothic", "MS Gothic", "HiraKakuProN-W3", "TakaoExGothic", "Droid Sans Japanese", sans-serif;
 }
 
+/*==========================================================================================================================================================*/
+/* Default fonts and color settings */
+/*==========================================================================================================================================================*/
 html
-{	--serif-fonts: var(--eng-serif-fonts);
+{	
+	--serif-fonts: var(--eng-serif-fonts);
 	--sans-serif-fonts: var(--eng-sans-serif-fonts);
+	--body-bg: var(--light-theme-body-bg);
+	--text-color: var(--light-theme-text-color);
+	--link-color: var(--light-theme-link-color);
+	--link-hover-color: var(--light-theme-link-hover-color);
+	--widget-bg: var(--light-theme-widget-bg);
+	--widget-bg-highlight: var(--light-theme-widget-bg-highlight);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+html[data-dark='true']
+{
+	--body-bg: var(--dark-theme-body-bg);
+	--text-color: var(--dark-theme-text-color);
+	--link-color: var(--dark-theme-link-color);
+	--link-hover-color: var(--dark-theme-link-hover-color);
+	--widget-bg: var(--dark-theme-widget-bg);
+	--widget-bg-highlight: var(--dark-theme-widget-bg-highlight);
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+html[lang='ja']
+{	--serif-fonts: var(--jap-serif-fonts);
+	--sans-serif-fonts: var(--jap-sans-serif-fonts);
 }
 
 /*==========================================================================================================================================================*/
@@ -42,25 +85,27 @@ html
 /* Default general settings, font(s), and text size
 /*===============================================================================================================================================*/
 html
-{	color: Black;
-	color: var(--text-color,Black);
-	font-family: sans-serif;
-	font-family: var(--sans-serif-fonts, sans-serif);
-	font-size: 16px;
-	line-height: 1.6em;
+{	
+	font-size: 62.5%;
 	scroll-behavior: smooth;
 }
 
 body
-{	background-color: White;
+{	
+	background-color: White;
+	background-color: var(--body-bg,White);
 	min-width: 320px;
-	margin: 0 auto;
+	margin: 0;
 	padding: 0;
 	position: relative;
-	font-size: inherit;
-	line-height: inherit;
-	font-weight: normal;
+	color: Black;
+	color: var(--text-color,Black);
+	font-size: 1.6rem;
+	line-height: 1.6em;
+	font-family: sans-serif;
+	font-family: var(--sans-serif-fonts, sans-serif);
 	font-style: normal;
+	font-weight: normal;
 	text-align: left;
 	word-wrap: break-word;
 }
@@ -85,7 +130,7 @@ table, tbody, tfoot, thead, tr, th, td,
 blockquote,
 form,
 fieldset, legend,
-input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='reset']):not([type='range']),
+input:not([type='checkbox']):not([type='image']):not([type='radio']):not([type='range']):not([type='reset']):not([type='submit']),
 textarea,
 select, option
 {	line-height: 1.6em;
@@ -139,20 +184,26 @@ a:hover
 }
 
 /* Links clearly within plain text (almost always in a P tag) should look a different color than the text. */ 
-/* To emulate this with other tags, use the .text-link class either on the parent/ancestor or on the A tag itself */
+/* If other tags contain links and this behavior is desired, use the .text-link class either on the parent/ancestor or on the A tag itself */
+/* For tags that aren't A tags, text-link-color can be used. */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 p a,
-.text-link a, a.text-link
-{	color: RoyalBlue;
-	color: var(--link-color, RoyalBlue);
+.text-link a, a.text-link,
+.text-link-color
+{	color: royalblue;
+	color: var(--link-color, royalblue);
+}
+
+.text-link-color
+{	cursor: pointer;
 }
 
 p a:hover, 
-.text-link a:hover, a.text-link:hover,
 p label:hover,
-.text-link label:hover, label.text-link:hover
-{	color: SkyBlue;
-	color: var(--link-hover-color, SkyBlue);
+.text-link a:hover, a.text-link:hover,
+.text-link-color:hover
+{	color: deepskyblue;
+	color: var(--link-hover-color, deepskyblue);
 	text-decoration: underline;
 }
 
@@ -204,17 +255,26 @@ table th, table td
 /* Dynamic pages and inputs */
 /* Minimum 16 font size is done to ensure no needless auto zooming on iPhones */
 /*==========================================================================================================================================================*/
-input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='reset']):not([type='range']),
+input:not([type='checkbox']):not([type='image']):not([type='radio']):not([type='range']):not([type='reset']):not([type='submit']),
 textarea, select
-{	box-sizing: border-box;
+{	
+	background-color: white;
+	background-color: var(--body-bg, white);
+	box-sizing: border-box;
 	border: 1px solid;
 	font-size: 16px;
 	font-size: max(1rem,16px);
 }
 
+select
+{
+	padding: 0.125em 0;
+}
+
 textarea
 {	max-width: 100%;
 	resize: vertical;
+	min-height: 2em;
 }
 
 /*===============================================================================================================================================*/
@@ -368,141 +428,120 @@ textarea
 	margin-right: auto !important;
 }
 
-/* Top (measured in pixels) */
+/* Top */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 .mt0  { margin-top: 0 !important; }
+.mt0-25 { margin-top: 0.25rem !important; }
+.mt0-5  { margin-top: 0.50rem !important; }
+.mt0-75 { margin-top: 0.75rem !important; }
+.mt1    { margin-top: 1.00rem !important; }
+.mt1-25 { margin-top: 1.25rem !important; }
+.mt1-5  { margin-top: 1.50rem !important; }
+.mt1-75 { margin-top: 1.75rem !important; }
+.mt2    { margin-top: 2.00rem !important; }
+.mt2-25 { margin-top: 2.25rem !important; }
+.mt2-5  { margin-top: 2.50rem !important; }
+.mt2-75 { margin-top: 2.75rem !important; }
+.mt3    { margin-top: 3.00rem !important; }
+.mt3-25 { margin-top: 3.25rem !important; }
+.mt3-5  { margin-top: 3.50rem !important; }
+.mt3-75 { margin-top: 3.75rem !important; }
+.mt4    { margin-top: 4.00rem !important; }
 
-.mt5  {  margin-top: 5px !important; }
-.mt10 { margin-top: 10px !important; }
-.mt15 { margin-top: 15px !important; }
-.mt20 { margin-top: 20px !important; }
-.mt30 { margin-top: 30px !important; }
-.mt40 { margin-top: 40px !important; }
-
-/* rem */
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-.mt0-25rem { margin-top: 0.25rem !important; }
-.mt0-5rem  { margin-top: 0.5rem !important; }
-.mt0-75rem { margin-top: 0.75rem !important; }
-.mt1rem    { margin-top: 1.0rem !important; }
-.mt1-25rem { margin-top: 1.25rem !important; }
-.mt1-5rem  { margin-top: 1.5rem !important; }
-.mt1-75rem { margin-top: 1.75rem !important; }
-.mt2rem    { margin-top: 2.0rem !important; }
-.mt2-25rem { margin-top: 2.25rem !important; }
-.mt2-5rem  { margin-top: 2.5rem !important; }
-.mt2-75rem { margin-top: 2.75rem !important; }
-.mt3rem    { margin-top: 3.0rem !important; }
-.mt3-25rem { margin-top: 3.25rem !important; }
-.mt3-5rem  { margin-top: 3.5rem !important; }
-.mt3-75rem { margin-top: 3.75rem !important; }
-.mt4rem    { margin-top: 4.0rem !important; }
-
-/* Bottom (measured in pixels) */
+/* Bottom */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 .mb0  { margin-bottom: 0 !important; }
-
-.mb5  {  margin-bottom: 5px !important; }
-.mb10 { margin-bottom: 10px !important; }
-.mb15 { margin-bottom: 15px !important; }
-.mb20 { margin-bottom: 20px !important; }
-.mb30 { margin-bottom: 30px !important; }
-.mb40 { margin-bottom: 40px !important; }
-
-/* rem */
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-.mb0-25rem { margin-bottom: 0.25rem !important; }
-.mb0-5rem  { margin-bottom: 0.5rem !important; }
-.mb0-75rem { margin-bottom: 0.75rem !important; }
-.mb1rem    { margin-bottom: 1.0rem !important; }
-.mb1-25rem { margin-bottom: 1.25rem !important; }
-.mb1-5rem  { margin-bottom: 1.5rem !important; }
-.mb1-75rem { margin-bottom: 1.75rem !important; }
-.mb2rem    { margin-bottom: 2.0rem !important; }
-.mb2-25rem { margin-bottom: 2.25rem !important; }
-.mb2-5rem  { margin-bottom: 2.5rem !important; }
-.mb2-75rem { margin-bottom: 2.75rem !important; }
-.mb3rem    { margin-bottom: 3.0rem !important; }
-.mb3-25rem { margin-bottom: 3.25rem !important; }
-.mb3-5rem  { margin-bottom: 3.5rem !important; }
-.mb3-75rem { margin-bottom: 3.75rem !important; }
-.mb4rem    { margin-bottom: 4.0rem !important; }
+.mb0-25 { margin-bottom: 0.25rem !important; }
+.mb0-5  { margin-bottom: 0.50rem !important; }
+.mb0-75 { margin-bottom: 0.75rem !important; }
+.mb1    { margin-bottom: 1.00rem !important; }
+.mb1-25 { margin-bottom: 1.25rem !important; }
+.mb1-5  { margin-bottom: 1.50rem !important; }
+.mb1-75 { margin-bottom: 1.75rem !important; }
+.mb2    { margin-bottom: 2.00rem !important; }
+.mb2-25 { margin-bottom: 2.25rem !important; }
+.mb2-5  { margin-bottom: 2.50rem !important; }
+.mb2-75 { margin-bottom: 2.75rem !important; }
+.mb3    { margin-bottom: 3.00rem !important; }
+.mb3-25 { margin-bottom: 3.25rem !important; }
+.mb3-5  { margin-bottom: 3.50rem !important; }
+.mb3-75 { margin-bottom: 3.75rem !important; }
+.mb4    { margin-bottom: 4.00rem !important; }
 
 
 /*===============================================================================================================================================*/
 /* Extra utility for parent tags and their child tags to have margin-bottom settings for all children that are not the last one */
 /* Good for generated content where it may not be clear which one will be last (or if extra content were to get inserted dynamically) */
 /*===============================================================================================================================================*/
-/* Measured in pixels */
-.parent-not-last-mb10 > :not(:last-child), .not-last-mb10:not(:last-child)
-{	margin-bottom: 10px;
-}
-.parent-not-last-mb20 > :not(:last-child), .not-last-mb20:not(:last-child)
-{	margin-bottom: 20px;
-}
-
-.parent-not-last-mb30 > :not(:last-child), .not-last-mb30:not(:last-child)
-{	margin-bottom: 30px;
-}
-
-.parent-not-last-mb40 > :not(:last-child), .not-last-mb40:not(:last-child)
-{	margin-bottom: 40px;
-}
-
-/* Measures in rems */
-.parent-not-last-mb0-25rem > :not(:last-child), .not-last-mb0-25rem:not(:last-child)
+.parent-not-last-mb0-25 > :not(:last-child), 
+.not-last-mb0-25:not(:last-child)
 {	margin-bottom: 0.25rem;
 }
-.parent-not-last-mb0-5rem > :not(:last-child), .not-last-mb0-5rem:not(:last-child)
+.parent-not-last-mb0-5rem > :not(:last-child), 
+.not-last-mb0-5rem:not(:last-child)
 {	margin-bottom: 0.5rem;
 }
-.parent-not-last-mb0-75rem > :not(:last-child), .not-last-mb0-75rem:not(:last-child)
+.parent-not-last-mb0-75rem > :not(:last-child), 
+.not-last-mb0-75rem:not(:last-child)
 {	margin-bottom: 0.75rem;
 }
-.parent-not-last-mb1rem > :not(:last-child), .not-last-mb1rem:not(:last-child)
+.parent-not-last-mb1 > :not(:last-child), 
+.not-last-mb1:not(:last-child)
 {	margin-bottom: 1rem;
 }
-.parent-not-last-mb1-25rem > :not(:last-child), .not-last-mb1-25rem:not(:last-child)
+.parent-not-last-mb1-25 > :not(:last-child), 
+.not-last-mb1-25:not(:last-child)
 {	margin-bottom: 1.25rem;
 }
-.parent-not-last-mb1-5rem > :not(:last-child), .not-last-mb1-5rem:not(:last-child)
+.parent-not-last-mb1-5 > :not(:last-child), 
+.not-last-mb1-5:not(:last-child)
 {	margin-bottom: 1.5rem;
 }
-.parent-not-last-mb1-75rem > :not(:last-child), .not-last-mb1-75rem:not(:last-child)
+.parent-not-last-mb1-75 > :not(:last-child), 
+.not-last-mb1-75:not(:last-child)
 {	margin-bottom: 1.75rem;
 }
-.parent-not-last-mb2rem > :not(:last-child), .not-last-mb2rem:not(:last-child)
+.parent-not-last-mb2 > :not(:last-child), 
+.not-last-mb2:not(:last-child)
 {	margin-bottom: 2rem;
 }
-.parent-not-last-mb2-25rem > :not(:last-child), .not-last-mb2-25rem:not(:last-child)
-{	margin-bottom: 1.25rem;
+.parent-not-last-mb2-25 > :not(:last-child), 
+.not-last-mb2-25:not(:last-child)
+{	margin-bottom: 2.25rem;
 }
-.parent-not-last-mb2-5rem > :not(:last-child), .not-last-mb2-5rem:not(:last-child)
-{	margin-bottom: 1.5rem;
+.parent-not-last-mb2-5 > :not(:last-child), 
+.not-last-mb2-5:not(:last-child)
+{	margin-bottom: 2.5rem;
 }
-.parent-not-last-mb2-75rem > :not(:last-child), .not-last-mb2-75rem:not(:last-child)
-{	margin-bottom: 1.75rem;
+.parent-not-last-mb2-75 > :not(:last-child), 
+.not-last-mb2-75:not(:last-child)
+{	margin-bottom: 2.75rem;
 }
-.parent-not-last-mb3rem > :not(:last-child), .not-last-mb3rem:not(:last-child)
-{	margin-bottom: 2rem;
+.parent-not-last-mb3 > :not(:last-child), 
+.not-last-mb3:not(:last-child)
+{	margin-bottom: 3rem;
 }
-.parent-not-last-mb3-25rem > :not(:last-child), .not-last-mb3-25rem:not(:last-child)
-{	margin-bottom: 1.25rem;
+.parent-not-last-mb3-25 > :not(:last-child), 
+.not-last-mb3-25:not(:last-child)
+{	margin-bottom: 3.25rem;
 }
-.parent-not-last-mb3-5rem > :not(:last-child), .not-last-mb3-5rem:not(:last-child)
-{	margin-bottom: 1.5rem;
+.parent-not-last-mb3-5 > :not(:last-child), 
+.not-last-mb3-5:not(:last-child)
+{	margin-bottom: 3.5rem;
 }
-.parent-not-last-mb3-75rem > :not(:last-child), .not-last-mb3-75rem:not(:last-child)
-{	margin-bottom: 1.75rem;
+.parent-not-last-mb3-75 > :not(:last-child), 
+.not-last-mb3-75:not(:last-child)
+{	margin-bottom: 3.75rem;
 }
-.parent-not-last-mb4rem > :not(:last-child), .not-last-mb4rem:not(:last-child)
-{	margin-bottom: 2rem;
+.parent-not-last-mb4 > :not(:last-child), 
+.not-last-mb4:not(:last-child)
+{	margin-bottom: 4rem;
 }
 
 /* Extra Utility class for multiple P tags (good for when there's a bunch of plain text that needs spacing) */
 .p-mb p:not(:last-child),
 .p-mb-direct > p:not(:last-child)
-{	margin-bottom: 1rem;
+{	margin-bottom: 1em;
 }
 
 
@@ -512,22 +551,18 @@ textarea
 /* These are pre-determined settings that do not change with screen size */
 /*===============================================================================================================================================*/
 /*===============================================================================================================================================*/
-/* All directions - measured in pixels */
+
+/* All directions */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 .p0  { padding: 0 !important; }
-.p10 { padding: 10px !important; }
-.p20 { padding: 20px !important; }
-
-/* rem */
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-.p0-25rem { padding: 0.25rem !important; }
-.p0-5rem  { padding: 0.5rem !important; }
-.p0-75rem { padding: 0.75rem !important; }
-.p1rem    { padding: 1.0rem !important; }
-.p1-25rem { padding: 1.25rem !important; }
-.p1-5rem  { padding: 1.5rem !important; }
-.p1-75rem { padding: 1.75rem !important; }
-.p2rem    { padding: 2.0rem !important; }
+.p0-25 { padding: 0.25rem !important; }
+.p0-5  { padding: 0.50rem !important; }
+.p0-75 { padding: 0.75rem !important; }
+.p1    { padding: 1.00rem !important; }
+.p1-25 { padding: 1.25rem !important; }
+.p1-5  { padding: 1.50rem !important; }
+.p1-75 { padding: 1.75rem !important; }
+.p2    { padding: 2.00rem !important; }
 
 /* Left and right */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -535,28 +570,28 @@ textarea
 {	padding-left: 0 !important;
 	padding-right: 0 !important;
 }
-.plr10,.prl10
-{	padding-left: 10px !important;
-	padding-right: 10px !important;
+.plr1,.prl1
+{	padding-left: 1rem !important;
+	padding-right: 1rem !important;
 }
-.plr20,.prl20
-{	padding-left: 20px !important;
-	padding-right: 20px !important;
+.plr2,.prl2
+{	padding-left: 2rem !important;
+	padding-right: 2rem !important;
 }
 
-/* Top (measured in pixels) */
+/* Top */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 .pt0  { padding-top: 0 !important; }
 
-.pt10 { padding-top: 10px !important; }
-.pt20 { padding-top: 20px !important; }
+.pt1 { padding-top: 1rem !important; }
+.pt2 { padding-top: 2rem !important; }
 
-/* Bottom (measured in pixels) */
+/* Bottom */
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 .pb0  { padding-bottom: 0 !important; }
 
-.pb10 { padding-bottom: 10px !important; }
-.pb20 { padding-bottom: 20px !important; }
+.pb1 { padding-bottom: 1rem !important; }
+.pb2 { padding-bottom: 2rem !important; }
 
 /*===============================================================================================================================================*/
 /* Floats and overflow */
@@ -628,8 +663,15 @@ textarea
 .flex
 {	display: flex;
 }
+.space-between, .sb
+{
+	justify-content: space-between;
+}
 .grid
 {	display: grid;
+}
+.flow-root
+{	display: flow-root;
 }
 
 /* Forced override of display settings. These are intended to stay constant regardless of the viewport */
@@ -652,4 +694,7 @@ textarea
 }
 .force-grid
 {	display: grid !important;
+}
+.force-flow-root
+{	display: flow-root !important;
 }

@@ -1,15 +1,33 @@
-html
+:root
 {	
-	--checkingBG: #DFF;
-	--checkedBG: #77F;
-	--uncheckingBG: #BDD;
-	--checkColor: #FFF;
+	--check-off-bg-color: transparent;
+	--check-border-color: #333;
+	--checking-bg-color: #DFF;
+	--check-on-bg-color: #77F;
+	--unchecking-bg-color: #BDD;
+	--check-icon-color: #FFF;
 
 	--switchOffBG: #888;
 	--switchOffColor: #CCC;
 	--switchOnBG: #77F;
 	--switchOnColor: #FFF;
 }
+
+html
+{	
+	
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (prefers-color-scheme: dark) 
+{
+	html
+	{
+
+	}
+}
+
+
 
 /*===============================================================================================================================================*/
 /*===============================================================================================================================================*/
@@ -20,12 +38,16 @@ html
 /*===============================================================================================================================================*/
 /*===============================================================================================================================================*/
 .box
-{	background-color: #EEE;
+{	
+	background-color: #DDD;
+	background-color: var(--widget-bg,#DDD);
 	padding: 1rem;
 	margin: 0;
 }
 .outline-box
-{	background-color: white;
+{	
+	background-color: white;
+	background-color: var(--body-bg, white);
 	padding: 1rem;
 	border: 1px solid;
 	margin: 0;
@@ -53,6 +75,7 @@ html
 	justify-content: space-between;
 	text-align: center;
 	margin: 0;
+	gap: 2rem;
 }
 
 .btns:not(:last-child)
@@ -60,14 +83,17 @@ html
 }
 
 .btns > *
-{	background-color: #DDD;
-	flex: 0 1 48%;
+{	
+	background-color: #DDD;
+	background-color: var(--widget-bg,#DDD);
+	flex: 0 1 100%;
 	box-sizing: border-box;
 	display: block;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	border: 1px solid transparent;
-	padding: 1rem;
+	padding: 1em 1em;
 	position: relative;
 }
 .btns > :only-child
@@ -76,7 +102,9 @@ html
 }
 .btns > a:hover,
 .btns > button:hover
-{	background-color: #EEE;
+{	
+	background-color: #EEE;
+	background-color: var(--widget-bg-highlight,#EEE);
 }
 
 
@@ -84,33 +112,13 @@ html
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 .btns.auto-size
 {	justify-content: flex-start;
+	flex-wrap: wrap;
 }
 
 .btns.auto-size > *,
 .btns.auto-size > :only-child
 {	flex-basis: auto;
 	flex-grow: 0;
-}
-.btns.auto-size > :not(:last-child)
-{	margin-right: 1rem;
-}
-
-/* 	.smt-break will make all buttons be one on a line and full width for mobile devices */
-/*----------------------------------------------------------------------------------------------------------------------------------------------*/
-@media screen and (max-width: 999px)
-{	.btns.smt-break
-	{	display: block;
-	}
-	.btns.smt-break > *
-	{	display: block;
-		display: flex;
-		width: auto;
-		max-width: none;
-		margin: 0 0 2rem;
-	}
-	.btns.smt-break > :last-child
-	{	margin-bottom: 0;
-	}
 }
 
 /*===============================================================================================================================================*/
@@ -223,14 +231,23 @@ This is just a very generic shape by default.  Additional styling will be needed
 	line-height: inherit;
 }
 
+.pagination a,
+.pagination span
+{
+	padding: 0.125em 0.5em;
+}
+
 .pagination a
 {	background-color: #DDD;
+	background-color: var(--widget-bg, #DDD);
 }
 .pagination a:hover
 {	background-color: #EEE;
+	background-color: var(--widget-bg-highlight, #EEE);
 }
 .pagination .current
 {	background-color: #EEE;
+	background-color: var(--widget-bg-highlight, #EEE);
 }
 
 .pagination ol
@@ -382,11 +399,15 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 /*===============================================================================================================================================*/
 /*===============================================================================================================================================*/
 .sub-menu-parent
-{ 	position: relative;
+{ 	
+	background-color: #DDD;
+	background-color: var(--widget-bg, #DDD);
+	position: relative;
 }
 
 .sub-menu 
 { 	background-color: #DDD;
+	background-color: var(--widget-bg, #DDD);
 	visibility: hidden;
 	opacity: 0;
 	position: absolute;
@@ -469,20 +490,6 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 	display: block;
 }
 
-/* Indents checkboxes or radios */
-.indent-input
-{	padding-left: 25px;
-	text-indent: -25px;
-	display: block;
-}
-.indent-input input[type='checkbox'],
-.indent-input input[type='radio']
-{	width: 20px;
-	display: inline-block;
-	margin: 0 5px 0 0;
-	text-indent: 0;
-}
-
 /*===============================================================================================================================================*/
 /*===============================================================================================================================================*/
 /*  Input visuals (checks/radios)
@@ -497,10 +504,9 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 .radio-holder
 {	
 	display: inline-block;
-	vertical-align: middle;
 	font-size: 1em;
 	font-size: max(1em, 16px);
-	line-height: 1em;
+
 }
 
 
@@ -519,9 +525,10 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 	width: 1em;
 	height: 1em;
 	position: relative;
-	display: block;
+	display: inline-block;
+	
 	box-sizing: content-box;
-	transition: background-color 0.1s
+	transition: background-color 0.1s;
 }
 
 .checkbox-holder .check
@@ -560,8 +567,7 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 .radio-holder .radio::before
 {	
 	background-color: transparent;
-	width: 0.5em;
-	height: 0.5em;
+	border: 0.25em solid;
 	margin-left: -0.25em;
 	margin-top: -0.25em;
 	border-radius: 50%;
@@ -569,19 +575,19 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 }
 
 /* Activating */
-.checkbox-holder input[type='checkbox']:active ~ .check,
-.radio-holder input[type='radio']:active ~ .radio
+.checkbox-holder input[type='checkbox']:active:not(:disabled) ~ .check,
+.radio-holder input[type='radio']:active:not(:disabled) ~ .radio
 {	
 	background-color: lightcyan;
-	background-color: var(--checkingBG, lightcyan);
+	background-color: var(--checking-bg-color, lightcyan);
 }
 
 /* Deactivating */
-.checkbox-holder input[type='checkbox']:active:checked ~ .check,
-.radio-holder input[type='radio']:active:checked ~ .radio
+.checkbox-holder input[type='checkbox']:active:checked:not(:disabled) ~ .check,
+.radio-holder input[type='radio']:active:checked:not(:disabled) ~ .radio
 {	
 	background-color: lightblue;
-	background-color: var(--uncheckingBG, lightblue);
+	background-color: var(--unchecking-bg-color, lightblue);
 }
 
 /* ---- */
@@ -592,23 +598,24 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 }
 
 /* --- */
-.checkbox-holder input[type='checkbox']:checked ~ .check
-{	background-color: dodgerblue;
-	background-color: var(--checkedBG, dodgerblue);
-}
-
-.checkbox-holder input[type='checkbox']:checked ~ .check::before
-{	color: White;
-	color: var(--checkColor, White);
-}
-
+.checkbox-holder input[type='checkbox']:checked ~ .check,
 .radio-holder input[type='radio']:checked ~ .radio
-{	background-color: White;
+{	background-color: dodgerblue;
+	background-color: var(--check-on-bg-color, dodgerblue);
 }
 
+.checkbox-holder input[type='checkbox']:checked ~ .check::before,
 .radio-holder input[type='radio']:checked ~ .radio::before
-{	background-color: dodgerblue;
-	background-color: var(--checkedBG, dodgerblue);
+{	color: White;
+	color: var(--check-icon-color, White);
+}
+
+/* ++++++++++++++ */
+.checkbox-holder input[type='checkbox']:disabled ~ *,
+.radio-holder input[type='radio']:disabled ~ *
+{
+	opacity: 0.8;
+	cursor: not-allowed;
 }
 
 
@@ -634,8 +641,8 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 	background-color: var(--switchOffBG, gray);
 	border: 1px solid;
 	border-radius: 1em;
-	width: 2.4em;
-	height: 1.2em;
+	width: 2.5em;
+	height: 1.25em;
 	position: relative;
 	display: block;
 	box-sizing: content-box;
@@ -650,7 +657,7 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 	height: 1em;
 	position: absolute;
 	top: 50%;
-	left: 0.1em;
+	left: 0.125em;
 
 	box-sizing: border-box;
 	border-radius: 50%;
@@ -667,5 +674,5 @@ Tags that will make a child tag called .sub-menu appear when they gain focus.
 .switch-holder input[type='checkbox']:checked ~ .switch::before
 {	background-color: lightcyan;
 	background-color: var(--switchOnColor, lightcyan);
-	left: calc(100% - 1.1em);
+	left: calc(100% - 1.125em);
 }

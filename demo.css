@@ -1,0 +1,81 @@
+:root
+{
+	--mainHeadingBG: hsl(260,40%,40%);
+	--light-theme-heading1BG: hsl(210,70%,60%);
+	--light-theme-heading2BG: hsl(180,70%,60%);
+
+	--dark-theme-heading1BG: hsl(210,60%,40%);
+	--dark-theme-heading2BG: hsl(180,50%,30%);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+html
+{
+	--heading1BG: var(--light-theme-heading1BG);
+	--heading2BG: var(--light-theme-heading2BG);
+}
+html[data-dark='true']
+{
+	--heading1BG: var(--dark-theme-heading1BG);
+	--heading2BG: var(--dark-theme-heading2BG);
+}
+
+
+header,
+footer {
+	background-color: var(--mainHeadingBG);
+	color: White;
+	padding: 0.25rem 1rem;
+}
+
+header nav > *
+{
+	width: 12ch;
+	justify-content: space-between;
+
+}
+
+header nav > :last-child,
+[data-dark='true'] header nav > :first-child
+{
+	display: none;
+}
+[data-dark='true'] header nav > :last-child,
+header nav > :first-child
+{
+	display: flex;
+}
+
+/* ============================================================================================= */
+main {
+	flex: 1 1 0%;
+	padding: 2rem 0;
+}
+
+main h2 {
+	background-color: var(--heading1BG);
+	border-radius: 0.25em;
+	padding: 0.5rem 1rem;
+	margin-bottom: 2rem;
+	color: LightCyan;
+	font-size: 2rem;
+}
+
+main h3 
+{
+	background-color: var(--heading2BG);
+	border-radius: 0.25em;
+	padding: 0.5rem 1rem;
+	margin-bottom: 1rem;
+}
+form .switch
+{	--onBG: #70F0FF;
+
+}
+
+/* ============================================================================================= */
+#simple-modal.demo-theming 
+{
+	--modal-main-bg: var(--body-bg);
+	--modal-title-bg: var(--heading1BG);
+}
